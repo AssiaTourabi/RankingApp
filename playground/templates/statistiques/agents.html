@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste et Ajout des Agents</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Liste des Agents</h1>
+        <ul class="list-group mb-4">
+            {% for agent in data %}
+                <li class="list-group-item">
+                    {{ agent.matricule }} - {{ agent.nom_prenom }}
+                    <a href="{% url 'edit_agent' agent.id %}">Edit</a>
+                    <a href="{% url 'delete_agent' agent.id %}">Delete</a>
+        
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Ajouter un Agent</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.matricule.label_tag }}
+                {{ form.matricule }}
+            </div>
+            <div class="form-group">
+                {{ form.nom_prenom.label_tag }}
+                {{ form.nom_prenom }}
+            </div>
+            <div class="form-group">
+                {{ form.date_naissance.label_tag }}
+                {{ form.date_naissance }}
+            </div>
+            <div class="form-check">
+                {{ form.sit_fam }}
+                {{ form.sit_fam.label_tag }}
+            </div>
+            <div class="form-group">
+                {{ form.date_embauche.label_tag }}
+                {{ form.date_embauche }}
+            </div>
+            <div class="form-group">
+                {{ form.nombre_enf.label_tag }}
+                {{ form.nombre_enf }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</body>
+</html>

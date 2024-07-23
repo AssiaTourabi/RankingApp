@@ -1,0 +1,28 @@
+<!-- Dans statistics.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistiques</title>
+</head>
+<body>
+    <h1>Statistiques</h1>
+    
+    <h2>Total des Agents: {{ total_agents }}</h2>
+    <h2>Total des Demandes: {{ total_demandes }}</h2>
+
+    <!-- Affichage du diagramme en barres -->
+    <div>
+        <h2>Nombre de Demandes par Type de Vue</h2>
+       
+    </div>
+
+    <h2>Statistiques par Type de Vue</h2>
+    <ul>
+        {% for item in demandes_par_vue %}
+            <li>{{ item.type_vue }} : {{ item.count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
